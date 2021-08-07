@@ -1,0 +1,11 @@
+{
+  "name": "fake_blog_fe",
+  "version": "1.0.0",
+  "description": "FE for blog app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
