@@ -8,7 +8,7 @@
         "build": "webpack --config webpack.dev.ts",
         "build:dev": "webpack --watch --config webpack.dev.ts",
         "build:prod": "webpack --config webpack.prod.ts",
-        "test": "npm run test --expose-gc --verbose --logHeapUsage",
+        "test": "jest --verbose --logHeapUsage",
         "test:unit-ci": "cross-env CI=true npm run test --coverage --bail --watchAll=false",
         "test:unit": "npm run test --watchAll"
     },
@@ -38,8 +38,10 @@
         "eslint-plugin-react-hooks": "^4.2.0",
         "eslint-plugin-unused-imports": "^1.1.2",
         "html-webpack-plugin": "^5.3.2",
+        "jest": "^27.0.6",
         "prettier": "^2.3.2",
         "react-refresh": "^0.10.0",
+        "ts-jest": "^27.0.4",
         "ts-loader": "^9.2.5",
         "ts-node": "^10.1.0",
         "typescript": "^4.3.5",
@@ -109,6 +111,18 @@
         ],
         "moduleNameMapper": {
             ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "identity-obj-proxy"
-        }
+        },
+        "roots": [
+            "<rootDir>/src"
+        ],
+        "testMatch": [
+            "**/__tests__/**/*.+(ts|tsx|js)",
+            "**/?(*.)+(spec|test).+(ts|tsx|js)"
+        ],
+        "transform": {
+            "^.+\\.(ts|tsx)$": "ts-jest"
+        },
+        "testEnvironment": "jsdom",
+        "setupFilesAfterEnv": ["@testing-library/jest-dom/extend-expect"]
     }
 }
