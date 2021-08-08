@@ -14,8 +14,17 @@ module.exports = {
     rules: [
       {
         test: /\.(ts|tsx)$/,
-        loader: "awesome-typescript-loader",
         exclude: /node_modules/,
+        use: [
+          {
+            loader: require.resolve('awesome-typescript-loader'),
+            options: {
+              plugins: [
+                require.resolve('react-refresh/babel'),
+              ].filter(Boolean),
+            },
+          },
+        ],
       },
     ],
   },
