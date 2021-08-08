@@ -4,7 +4,7 @@
     "description": "FE for blog app",
     "main": "index.tsx",
     "scripts": {
-        "start": "webpack serve --config webpack.dev.ts --hot",
+        "start": "webpack serve --config webpack.dev.ts --hot --open",
         "build": "webpack --config webpack.dev.ts",
         "build:dev": "webpack --watch --config webpack.dev.ts",
         "build:prod": "webpack --config webpack.prod.ts",
