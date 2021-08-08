@@ -8,18 +8,25 @@
         "build": "webpack --config webpack.dev.ts",
         "build:dev": "webpack --watch --config webpack.dev.ts",
         "build:prod": "webpack --config webpack.prod.ts",
-        "test": "npm run test"
+        "test": "npm run test --expose-gc --verbose --logHeapUsage",
+        "test:unit-ci": "cross-env CI=true npm run test --coverage --bail --watchAll=false",
+        "test:unit": "npm run test --watchAll"
     },
     "author": "",
     "license": "ISC",
     "devDependencies": {
+        "@testing-library/jest-dom": "^5.14.1",
+        "@testing-library/react": "^12.0.0",
+        "@testing-library/user-event": "^13.2.1",
         "@trivago/prettier-plugin-sort-imports": "^2.0.2",
         "@types/dotenv": "^8.2.0",
+        "@types/jest": "^26.0.24",
         "@types/node": "^16.4.13",
         "@types/react": "^17.0.16",
         "@types/react-dom": "^17.0.9",
         "@typescript-eslint/eslint-plugin": "^4.29.0",
         "@typescript-eslint/parser": "^4.29.0",
+        "cross-env": "^7.0.3",
         "eslint": "^7.32.0",
         "eslint-config-airbnb": "^18.2.1",
         "eslint-config-prettier": "^8.3.0",
@@ -77,5 +84,31 @@
             "last 1 firefox version",
             "last 1 safari version"
         ]
+    },
+    "jest": {
+        "coverageThreshold": {
+            "global": {
+                "statements": 90,
+                "branches": 90,
+                "functions": 90,
+                "lines": 90
+            }
+        },
+        "coverageReporters": [
+            "json",
+            "html",
+            "text",
+            "text-summary"
+        ],
+        "collectCoverageFrom": [
+            "src/components/**/*.{js,jsx,ts,tsx}",
+            "!<rootDir>/src/**/*.stories.component.{js,jsx,ts,tsx}",
+            "!<rootDir>/src/**/*.stories.{js,jsx,ts,tsx}",
+            "!<rootDir>/src/stories/**/*",
+            "!<rootDir>/node_modules/*"
+        ],
+        "moduleNameMapper": {
+            ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "identity-obj-proxy"
+        }
     }
 }
