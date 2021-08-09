@@ -17,6 +17,39 @@ module.exports = {
                 use: ["ts-loader", "eslint-loader"],
                 exclude: /node_modules/,
             },
+            {
+                test: /\.css$/,
+                use: ["style-loader", "css-loader"],
+                exclude: /\.module\.css$/,
+            },
+            {
+                test: /\.scss$/,
+                use: ["style-loader", "css-loader", "sass-loader"],
+                exclude: /\.module\.scss$/,
+            },
+            {
+                test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+                use: [
+                    {
+                        loader: "file-loader",
+                        options: {
+                            name: "[name].[ext]",
+                            outputPath: "fonts/",
+                        },
+                    },
+                ],
+            },
+            {
+                test: /\.png$/,
+                use: [
+                    {
+                        loader: "url-loader",
+                        options: {
+                            mimetype: "image/png",
+                        },
+                    },
+                ],
+            },
         ],
     },
     plugins: [
