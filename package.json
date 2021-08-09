@@ -8,9 +8,9 @@
         "build": "webpack --config webpack.dev.ts",
         "build:dev": "webpack --watch --config webpack.dev.ts",
         "build:prod": "webpack --config webpack.prod.ts",
-        "test": "jest --verbose --logHeapUsage",
-        "test:unit-ci": "cross-env CI=true npm run test --coverage --bail --watchAll=false",
-        "test:unit": "npm run test --watchAll",
+        "test": "jest --verbose --runInBand --logHeapUsage",
+        "test:unit-ci": "cross-env CI=true npm run test -- --collect-coverage --bail --watchAll=false",
+        "test:unit": "npm run test -- --watchAll",
         "storybook": "start-storybook -p 6006",
         "build-storybook": "build-storybook"
     },
